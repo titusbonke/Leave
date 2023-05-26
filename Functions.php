@@ -52,6 +52,25 @@ if (isset($_POST["Function"])) {
     }
 
 
+    if ($_POST["Function"] == "ApproveLeaveAlt") {
+        // execute SQL statement
+        $LeaveAlt = $_POST["LeaveAlt"];
+        $LeaveVal = $_POST["LeaveVal"];
+        
+        $sql = "UPDATE `erp_leave_alt` SET `la_principalacpt` = '$LeaveVal' WHERE `erp_leave_alt`.`la_id` = $LeaveAlt;";
+        if (mysqli_query($conn, $sql)) {
+            echo "OK";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+
+        // close database connection
+        mysqli_close($conn);
+
+
+    }
+
+
 
 
 
